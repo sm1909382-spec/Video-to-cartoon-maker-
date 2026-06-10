@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cartoon Video Maker</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+            background: #000;
+            color: white;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #loading {
+            display: none;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Video to Cartoon Converter</h1>
+    <p>AI se video ko cartoon mein badal dega</p>
+    <form id="uploadForm">
+        <input type="file" id="videoFile" accept="video/*" required>
+        <br>
+        <button type="submit">Convert to Cartoon 🎨</button>
+    </form>
+    <div id="loading">
+        <p>⏳ Processing... Thoda wait kar (1-2 min)</p>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('uploadForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const file = document.getElementById('videoFile').files[0];
+            if (!file) return alert("Pehle video select kar!");
+            
+            document.getElementById('loading').style.display = 'block';
+            const formData = new FormData();
+            formData.append('video', file);
+            
+            try {
+                // Yeh sirf demo he. Asli AI ke liye tujhe backend API chahiye
+                // Abhi Glitch sirf frontend dikha raha hu
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                document.getElementById('result').innerHTML = '<p>✅ Demo: Video cartoon style mein convert ho jayega!<br><small>Note: Asli AI feature ke liye backend API chahiye</small></p>';
+            } catch(err) {
+                alert('Error: ' + err);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
